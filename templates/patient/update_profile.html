@@ -1,0 +1,36 @@
+{% extends "patient/patient_dashboard.html" %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2>Update Profile</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+            {{ form.phone_number }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.date_of_birth.id_for_label }}">Date of Birth</label>
+            {{ form.date_of_birth }}
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="form-check">
+                {% for widget in form.gender %}
+                    <div class="form-check">
+                        {{ widget.tag }} {{ widget.choice_label }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+</div>
+{% endblock %}

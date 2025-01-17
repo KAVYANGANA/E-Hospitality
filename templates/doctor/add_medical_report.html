@@ -1,0 +1,15 @@
+{% extends 'doctor/doctor_dashboard.html' %}
+
+{% block title %}Create Medical Report{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save Report</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'patient/patient_dashboard.html' %}
+
+{% block title %}Make Appointment{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <h2>APPOINTMENT FORM</h2>
+    {% if messages %}
+        <div class="alert alert-success" role="alert" id="successMessage">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="post" class="mt-3" autocomplete="off">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const specialityField = document.getElementById('id_speciality');
+            const doctorField = document.getElementById('id_doctor');
+
+            specialityField.addEventListener('change', function() {
+                const selectedSpeciality = specialityField.value;
+
+                if (selectedSpeciality) {
+                    fetch(`/get-doctors/?speciality=${selectedSpeciality}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Clear existing options
+                            doctorField.innerHTML = '<option value="">Select Doctor</option>';
+                            // Populate new options
+                            data.doctors.forEach(function(doctor) {
+                                const option = document.createElement('option');
+                                option.value = doctor.id;
+                                option.textContent = `${doctor.first_name} ${doctor.last_name}`;
+                                doctorField.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error('Error fetching doctors:', error));
+                } else {
+                    doctorField.innerHTML = '<option value="">Select Doctor</option>';
+                }
+            });
+        });
+
+        // If there's a success message, hide it after 5 seconds
+        window.addEventListener('DOMContentLoaded', function() {
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                },2000);  // 2000 milliseconds = 2 seconds
+            }
+        });
+
+    </script>
+
+</div>
+{% endblock %}

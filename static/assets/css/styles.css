@@ -1,0 +1,442 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 40px; /* Adjust this to match the height of the navbar */
+}
+
+
+section {
+    padding-top: 50px;
+}
+
+@media (max-width: 767px) {
+    body {
+        padding-top: 60px; /* Adjust for smaller devices */
+    }
+
+    section {
+        margin-top: 60px; /* Adjust for mobile */
+    }
+}
+
+
+
+/* Customizing the base_Navbar */
+.navbar {
+    background-color: #e3f2fd;
+    padding: 2px 5px;  /* Padding */
+    position: fixed;     /* Make the navbar fixed */
+    width: 100%;         /* Ensure navbar spans full width */
+    top: 0;              /* Position at the top */
+    left: 0;             /* Position at the left */
+    z-index: 1000;       /* Ensure the navbar is on top */
+    display: flex;       /* Optionally add flexbox for centering content */
+    justify-content: space-between; /* Adjust content spacing */
+}
+
+/* Padding for the content below the navbar */
+
+
+.navbar-nav .nav-link {
+    font-size: 20px; /* Optional: Reduce font size of links */
+    padding: 5px 10px; /* Optional: Adjust link padding */
+}
+.navbar-brand{
+    padding-left: 10px
+}
+
+.navbar-nav .dropdown-menu {
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-btn {
+        background-color: #007bff;
+        color: white;
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+
+    .login-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .dropdown-item {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+
+    .dropdown-item:hover {
+        background-color: #f1f1f1;
+    }
+
+    .login-item i {
+        margin-right: 10px;
+    }
+
+    .dropdown-item {
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu-lg-end {
+        left: auto;
+        right: 0;
+    }
+
+
+/* Customizing background image */
+
+.static-image {
+    width: 100%;
+    height: 650px; /* Default height for large screens */
+    position: relative;
+    overflow: hidden;
+}
+
+.static-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+    display: block; /* Removes any extra space below the image */
+}
+
+.img-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    padding-left: 20px;
+}
+
+.img-text h2 {
+    font-size: 2rem;
+    color:#6d6c73;
+}
+
+.img-text h6 {
+    font-size: 1rem;
+    color:#1f628e;
+    margin-bottom: 10px;
+}
+
+.custom-btn {
+    margin-top: 20px;
+    margin-right: 100px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    width: 50%;
+}
+
+/* Media query for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .static-image {
+        height: 450px; /* Reduce height for tablets */
+    }
+
+    .img-text {
+        padding-left: 10px; /* Reduce padding */
+    }
+
+    .img-text h2 {
+        font-size: 1.5rem; /* Reduce heading size */
+    }
+
+    .img-text h6 {
+        font-size: 0.9rem; /* Reduce subheading size */
+    }
+
+    .custom-btn {
+        width: 100px;  /* Adjust width for smaller screens */
+        font-size: 0.75rem;  /* Further reduce font size */
+        padding: 4px 8px;  /* Adjust padding for smaller screens */
+    }
+}
+
+/* Media query for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .static-image {
+        height: 300px; /* Further reduce height for mobile */
+    }
+
+    .img-text {
+        padding-left: 5px; /* Minimal padding for small screens */
+        text-align: left; /* Ensure text stays aligned */
+    }
+
+    .img-text h2 {
+        font-size: 1.2rem; /* Smaller heading for mobile */
+    }
+
+    .img-text h6 {
+        font-size: 0.8rem; /* Further reduce subheading size */
+    }
+
+    .custom-btn {
+        padding: 6px 12px; /* Compact button */
+        font-size: 0.8rem; /* Small button text */
+    }
+}
+
+
+/* About_Us  */
+.container-fluid {
+      padding: 10px;
+}
+
+.col-md-6 {
+      padding: 20px;
+}
+
+img.img-fluid {
+      width: 100%;
+      height: auto;
+      border-radius: 8px; /* Optional: Adds rounded corners to the image */
+}
+
+
+
+
+
+
+/* Customizing service section */
+
+.services-section {
+    background-color: #f8f9fa; /* Light background for the section */
+}
+
+.services-section h2 {
+    font-size: 2.5rem;
+    color:#1f628e; /* Primary color */
+    margin-bottom: 20px;
+}
+
+.services-section p {
+    font-size: 1.2rem;
+    color: #6c757d; /* Secondary text color */
+}
+
+.card {
+    border: none; /* Remove default border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+    background-color: white; /* Default background color */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+    background-color: #007bff; /* Blue background on hover */
+    color: white; /* Change text color to white */
+}
+
+.card:hover .card-title,
+.card:hover .card-text {
+    color: white; /* Ensure text remains visible on blue background */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color:#1f628e; /* Default color for title */
+    margin-bottom: 10px;
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.card-text {
+    font-size: 0.875rem; /* Default smaller size */
+    color: #6c757d;
+    transition: color 0.3s;
+}
+.card i {
+    color: #1f628e;  /* Set the desired color */
+    transition: color 0.3s;  /* Smooth color transition */
+}
+
+/* Change the color when hovering over the card */
+.card:hover i {
+    color: white;  /* Change to white on hover */
+}
+
+
+
+
+@media (max-width: 768px) {
+    .services-section h2 {
+        font-size: 2rem; /* Adjust heading size for tablets */
+    }
+
+    .services-section p {
+        font-size: 1rem; /* Adjust subheading size */
+    }
+    .card-text {
+        font-size: 0.75rem; /* Smaller font size on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .services-section h2 {
+        font-size: 1.8rem; /* Adjust heading size for mobile */
+    }
+
+    .services-section p {
+        font-size: 0.9rem; /* Adjust subheading size for mobile */
+    }
+
+    .card-title {
+        font-size: 1.2rem; /* Smaller title */
+    }
+
+    .card-text {
+        font-size: 0.9rem; /* Smaller card text */
+    }
+}
+
+
+
+
+/* Customizing Contactus section */
+
+.contact-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.contact-section h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.contact-section h5 {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.google-map {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.google-map iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.contact-info-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    width: 45%;
+    text-align: left;
+}
+
+.contact-details {
+    display: flex;
+    align-items: flex-start;  /* Align items to the top */
+    margin-bottom: 15px;
+}
+
+.contact-details i {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-right: 20px;  /* Add some space between icon and text */
+}
+
+.text-info {
+    display: flex;
+    flex-direction: column;  /* Stack text elements (h5 and p) vertically */
+}
+
+.text-info h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.text-info p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+
+
+
+
+.contact-form .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form .d-flex {
+    display: flex;
+    justify-content: space-between;  /* Distribute space between the input fields */
+}
+
+.contact-form .form-control {
+    flex: 1;  /* Allow inputs to grow to fill space */
+    margin-right: 10px;  /* Add space between inputs */
+}
+
+.contact-form .form-control:last-child {
+    margin-right: 0;  /* Remove margin from the last input */
+}
+
+
+@media (max-width: 768px) {
+    .contact-info-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .contact-details {
+        flex-direction: column;  /* Stack icon and text vertically on small screens */
+        align-items: flex-start;  /* Align items to the left */
+    }
+
+    .contact-details i {
+        margin-bottom: 10px;  /* Space between icon and text */
+    }
+
+    .contact-form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .contact-form button {
+        width: 100%;
+    }
+}
+/* patients dashboard section begins*/
+
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .btn {
+        width: 100%; /* Make buttons stack neatly */
+        margin-bottom: 0.5rem;
+    }
+}

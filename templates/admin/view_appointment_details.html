@@ -1,0 +1,13 @@
+{% extends "admin/admin_dashboard.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Appointment Details</h2>
+    <p><strong>Appointment ID:</strong> {{ appointment.id }}</p>
+    <p><strong>Patient Name:</strong> {{ appointment.patient.user.first_name }} {{ appointment.patient.user.last_name }}</p>
+    <p><strong>Date:</strong> {{ appointment.date_of_appointment }}</p>
+    <p><strong>Time:</strong> {{ appointment.time_of_appointment }}</p>
+
+    <a href="{% url 'admin_appointments' %}" class="btn btn-primary">Back to Appointment List</a>
+</div>
+{% endblock %}

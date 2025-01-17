@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <!-- Logo on the left -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'assets/img/logo4.png' %}" alt="E-Hospitality Logo" class="img-fluid" style="max-height: 50px;">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="w-100 d-lg-flex justify-content-between">
+                <!-- Buttons centered -->
+                <div class="d-flex justify-content-center w-100">
+
+                    <button class="btn btn-secondary me-2" onclick="location.href='{% url 'make_appointment' %}'">Make Appointment</button>
+                    <button class="btn btn-secondary me-2" onclick="location.href='{% url 'view_medical_reports' %}'">View Medical Report</button>
+                </div>
+
+                <!-- Home and Logout links to the right -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'patient_dashboard' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'view_profile' %}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container mt-4">
+
+    <!-- Welcome Section -->
+    <div class="text-center mb-5">
+        <h2>Welcome to Your Dashboard {{ user.username }}</h2>
+
+        <p class="text-muted">Your health and wellness at your fingertips.</p>
+    </div>
+
+    <!-- Health Tips Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-heartbeat text-danger"></i> Healthy Eating</h5>
+                    <p class="card-text">Learn about balanced diets, portion control, and nutrient-rich foods to boost your health.</p>
+                    <a href="https://www.healthline.com/nutrition/healthy-eating-tips" target="_blank" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-running text-success"></i> Stay Active</h5>
+                    <p class="card-text">Discover exercises and physical activities to maintain a healthy lifestyle.</p>
+                    <a href="https://www.fitness.gov/" target="_blank" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wellness Resources Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-stethoscope text-primary"></i> Regular Checkups</h5>
+                    <p class="card-text">Understand the importance of regular medical checkups for early detection and prevention.</p>
+                    <a href="https://www.healthline.com/nutrition/healthy-eating-tips" target="_blank" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-smile text-warning"></i> Mental Health</h5>
+                    <p class="card-text">Access resources to improve mental health and manage stress effectively.</p>
+                    <a href="https://www.mentalhealth.gov/" target="_blank" class="btn btn-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment Form Section -->
+    <div id="appointmentForm" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Book Your Appointment</h5>
+                <form action="/submit-appointment" method="POST">
+                    <!-- Patient Information -->
+                    <div class="form-group">
+                        <label for="patientName">Patient Name</label>
+                        <input type="text" id="patientName" name="patientName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patientEmail">Email</label>
+                        <input type="email" id="patientEmail" name="patientEmail" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patientPhone">Phone Number</label>
+                        <input type="tel" id="patientPhone" name="patientPhone" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointmentDate">Date of Appointment</label>
+                        <input type="date" id="appointmentDate" name="appointmentDate" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Select Department</label>
+                        <select id="department" name="department" class="form-control" required>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="pediatrics">Pediatrics</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="doctor">Select Doctor</label>
+                        <select id="doctor" name="doctor" class="form-control" required>
+                            <option value="dr_john_doe">Dr. John Doe</option>
+                            <option value="dr_jane_smith">Dr. Jane Smith</option>
+                            <option value="dr_emily_davis">Dr. Emily Davis</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+
+

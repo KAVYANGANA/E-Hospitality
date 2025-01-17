@@ -1,0 +1,46 @@
+{% extends 'patient/patient_dashboard.html' %}
+
+{% block title %}Make Payment{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="payment-box text-center p-5 rounded shadow-lg">
+        <h2 class="mb-4">Make Payment</h2>
+        <p class="fs-5"><strong>Doctor:</strong> Dr. {{ appointment.doctor.user.first_name }}</p>
+        <p class="fs-5"><strong>Date:</strong> {{ appointment.date_of_appointment }}</p>
+        <p class="fs-5"><strong>Time:</strong> {{ appointment.time_of_appointment }}</p>
+        <p class="fs-4"><strong>Amount:</strong> <span class="text-success">500.00</span></p>
+
+        <button id="payButton" class="btn btn-success btn-lg mt-3">Pay Now</button>
+    </div>
+</div>
+
+<style>
+    .payment-box {
+        background-color: #f8f9fa; /* Light gray background */
+        border: 3px solid #28a745; /* Green border */
+        width: 600px; /* Increased width */
+    }
+</style>
+
+
+
+<!-- Stripe JavaScript -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.getElementById('payButton').addEventListener('click', function() {
+            fetch("{% url 'make_payment' appointment.id %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                }
+            })
+            .then(response => response.json())
+            .then(session => {
+                var stripe = Stripe("{{ stripe_publishable_key }}");
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+{% endblock %}

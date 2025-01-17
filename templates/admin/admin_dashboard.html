@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'assets/img/logo4.png' %}" alt="E-Hospitality Logo" class="img-fluid" style="max-height: 50px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Logout</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">CARECONNECT</h1>
+        <h2 class="text-center mb-4">Admin Dashboard</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Manage Patients</h5>
+                        <p class="card-text">View, add, and update patient details.</p>
+                        <a href="{% url 'admin_patients' %}" class="btn btn-primary">Go to Patients</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-md fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Manage Doctors</h5>
+                        <p class="card-text">View, register, and update doctor profiles.</p>
+                        <a href="/admin_doctors/" class="btn btn-success">Go to Doctors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-check fa-3x mb-3 text-danger"></i>
+                        <h5 class="card-title">Manage Appointments</h5>
+                        <p class="card-text">Schedule, update, and track appointments.</p>
+                        <a href="{% url 'admin_appointments' %}" class="btn btn-danger">Go to Appointments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

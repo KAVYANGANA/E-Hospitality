@@ -1,0 +1,14 @@
+{% extends 'admin/admin_dashboard.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Doctor Details</h2>
+        <p><strong>Doctor ID:</strong> {{ doctor.id }}</p>
+        <p><strong>Name:</strong> Dr. {{ doctor.user.first_name }} {{ doctor.user.last_name }}</p>
+        <p><strong>Email:</strong> {{ doctor.user.email }}</p>
+        <p><strong>Phone:</strong> {{ doctor.phone_number }}</p>
+        <p><strong>Specialization:</strong> {{ doctor.speciality }}</p>
+
+        <a href="{% url 'admin_doctors' %}" class="btn btn-primary">Back to Doctors List</a>
+    </div>
+{% endblock %}

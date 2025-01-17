@@ -1,0 +1,24 @@
+{% extends "patient/patient_dashboard.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+
+      <div class="card mt-3 bg-light text-black">
+            <div class="card-header fw-bold">
+                Profile
+            </div>
+            <div class="card-body">
+                <p><strong>Username:</strong> {{ user.username}}</p>
+                <p><strong>Firstname:</strong> {{ user.first_name }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Phone Number:</strong> {{ profile.phone_number }}</p>
+                <p><strong>DOB:</strong> {{ profile.date_of_birth }}</p>
+                <p><strong>Gender:</strong> {{ profile.gender }}</p>
+
+            </div>
+            <div class="d-flex align-items-center ms-3">
+              <button class="btn btn-dark me-2" onclick="location.href='{% url 'update_profile' %}'" >Update</button>
+            </div>
+      </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "admin/admin_dashboard.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Update Appointment</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="date_of_appointment">Date:</label>
+        <input type="date" id="date_of_appointment" name="date_of_appointment" value="{{ appointment.date_of_appointment|date:'Y-m-d' }}" required class="form-control">
+
+        <label for="time_of_appointment">Time:</label>
+        <input type="time" id="time_of_appointment" name="time_of_appointment" value="{{ appointment.time_of_appointment|time:'H:i' }}" required class="form-control">
+        <br>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+{% endblock %}
